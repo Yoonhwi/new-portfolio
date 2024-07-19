@@ -1,14 +1,25 @@
 import { Flex, Icon } from "@chakra-ui/react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { FaCircle } from "react-icons/fa6";
 import gsap from "gsap";
+import { SectionName } from "@/constants";
+import { useScrollStore } from "@/store";
 
-const dummyName = ["INTRO", "ABOUT", "PROJECTS", "CONTACT"];
+const dummyName: SectionName[] = ["INTRO", "ABOUT", "PROJECTS", "CONTACT"];
 
 interface DefaultLayoutDotnavProps {
-  currentSection: string;
+  currentSection: SectionName;
 }
+
 const DefaultLayoutDotnav = ({ currentSection }: DefaultLayoutDotnavProps) => {
+  const { sections } = useScrollStore(["sections"]);
+
+  const scrollHandler = useCallback(
+    (name: SectionName) => {
+      window.scrollTo({ top: sections[name], behavior: "smooth" });
+    },
+    [sections]
+  );
   const dotNavRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -58,6 +69,8 @@ const DefaultLayoutDotnav = ({ currentSection }: DefaultLayoutDotnavProps) => {
               transform: "scale(2.2)",
             }}
             key={v}
+            onClick={() => scrollHandler(v)}
+            color={v === currentSection ? "white" : "blackAlpha.300"}
           />
         );
       })}

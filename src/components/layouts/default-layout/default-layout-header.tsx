@@ -79,12 +79,22 @@ const DefaultLayoutHeader = ({ currentSection }: DefaultLayoutHeaderProps) => {
 
   const handleMouseLeave = useCallback(
     (index: number) => {
-      if (navLinks[index].name !== currentSection) {
-        timelines.current[index].reverse();
-      }
+      if (currentSection === navLinks[index].name) return;
+      timelines.current[index].reverse();
     },
     [currentSection]
   );
+
+  useEffect(() => {
+    textRefs.current.forEach((textRef, index) => {
+      if (!textRef) return;
+      if (navLinks[index].name === currentSection) {
+        timelines.current[index].play();
+      } else {
+        timelines.current[index].reverse();
+      }
+    });
+  }, [currentSection]);
 
   return (
     <>
