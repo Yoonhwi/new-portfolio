@@ -1,10 +1,11 @@
-import { Contact, Home, Project } from "@/container";
-import DefaultLayout from "./components/layouts/default-layout/default-layout";
+import { About, Contact, Intro, Project } from "@/container";
+import { DefaultLayout } from "@/components";
 
 function App() {
   return (
     <DefaultLayout>
-      <Home />
+      <Intro />
+      <About />
       <Project />
       <Contact />
     </DefaultLayout>

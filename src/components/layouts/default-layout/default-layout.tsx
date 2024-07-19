@@ -1,3 +1,5 @@
+import { useCurrentSection } from "@/hooks";
+import DefaultLayoutDotnav from "./default-layout-dotnav";
 import DefaultLayoutHeader from "./default-layout-header";
 
 interface DefaultLayoutProps {
@@ -5,9 +7,12 @@ interface DefaultLayoutProps {
 }
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
+  const currentSection = useCurrentSection();
+
   return (
     <>
-      <DefaultLayoutHeader />
+      <DefaultLayoutHeader currentSection={currentSection} />
+      <DefaultLayoutDotnav currentSection={currentSection} />
       {children}
     </>
   );

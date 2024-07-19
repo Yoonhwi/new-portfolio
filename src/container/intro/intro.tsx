@@ -1,11 +1,15 @@
 import { Box } from "@chakra-ui/react";
-import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import HomeInfo from "./home_info";
+import { useEffect, useRef, useState } from "react";
+import HomeInfo from "./intro-text";
+import { useResizeOffsetTop } from "@/hooks";
 
-const Home = () => {
+const Intro = () => {
+  const introRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+
+  useResizeOffsetTop({ ref: introRef, name: "INTRO" });
 
   useEffect(() => {
     if (!imageRef.current) return;
@@ -34,6 +38,7 @@ const Home = () => {
       h={`100vh`}
       position="relative"
       overflow={"hidden"}
+      ref={introRef}
     >
       <Box
         ref={imageRef}
@@ -52,4 +57,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Intro;

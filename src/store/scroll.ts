@@ -9,9 +9,10 @@ interface T {
 
 export const scrollStore = create<T>((set) => ({
   sections: {
-    About: 0,
-    Projects: 0,
-    Contact: 0,
+    INTRO: 0,
+    ABOUT: 0,
+    PROJECTS: 0,
+    CONTACT: 0,
   },
 
   registerSection: (section: SectionName, offsetTop: number) => {
