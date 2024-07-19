@@ -1,8 +1,8 @@
 import { SectionName } from "@/constants";
-import { useScrollStore } from "@/store";
-import { Text, Flex, HStack } from "@chakra-ui/react";
-import { useCallback, useEffect, useRef } from "react";
+import { useSection } from "@/hooks";
+import { Flex, HStack, Text } from "@chakra-ui/react";
 import gsap from "gsap";
+import { useCallback, useEffect, useRef } from "react";
 
 interface NavLinkProps {
   name: SectionName;
@@ -15,16 +15,11 @@ const navLinks: NavLinkProps[] = [
   { name: "CONTACT" },
 ];
 
-interface DefaultLayoutHeaderProps {
-  currentSection: SectionName;
-}
-
-const DefaultLayoutHeader = ({ currentSection }: DefaultLayoutHeaderProps) => {
-  console.log(currentSection);
+const DefaultLayoutHeader = () => {
+  const { currentSection, scrollToSection } = useSection();
   const textRefs = useRef<(HTMLParagraphElement | null)[]>([]);
   const boxRef = useRef<HTMLDivElement | null>(null);
   const timelines = useRef<gsap.core.Timeline[]>([]);
-  const { sections } = useScrollStore(["sections"]);
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -65,13 +60,6 @@ const DefaultLayoutHeader = ({ currentSection }: DefaultLayoutHeaderProps) => {
       tc.forEach((tl) => tl.kill());
     };
   }, []);
-
-  const scrollHandler = useCallback(
-    (name: SectionName) => {
-      window.scrollTo({ top: sections[name], behavior: "smooth" });
-    },
-    [sections]
-  );
 
   const handleMouseEnter = useCallback((index: number) => {
     timelines.current[index].play();
@@ -117,7 +105,7 @@ const DefaultLayoutHeader = ({ currentSection }: DefaultLayoutHeaderProps) => {
             {navLinks.map((link, i) => (
               <Text
                 key={link.name}
-                onClick={() => scrollHandler(link.name)}
+                onClick={() => scrollToSection(link.name)}
                 onMouseEnter={() => handleMouseEnter(i)}
                 onMouseLeave={() => handleMouseLeave(i)}
                 ref={(el) => (textRefs.current[i] = el)}

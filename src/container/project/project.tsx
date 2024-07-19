@@ -1,12 +1,18 @@
-import { useResizeOffsetTop } from "@/hooks";
+import { useSection } from "@/hooks";
 import { Box, Text } from "@chakra-ui/react";
-import { useRef } from "react";
 
 const Project = () => {
-  const projectRef = useRef<HTMLDivElement>(null);
-  useResizeOffsetTop({ ref: projectRef, name: "PROJECTS" });
+  const { registerSection } = useSection();
+
   return (
-    <Box bgColor={"orange.100"} minH={`100vh`} ref={projectRef}>
+    <Box
+      bgColor={"orange.100"}
+      minH={`100vh`}
+      ref={(el) => {
+        if (!el) return;
+        registerSection("PROJECTS", el);
+      }}
+    >
       <Text>Project</Text>
     </Box>
   );

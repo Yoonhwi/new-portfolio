@@ -1,13 +1,18 @@
-import { useResizeOffsetTop } from "@/hooks";
+import { useSection } from "@/hooks";
 import { Box, Text } from "@chakra-ui/react";
-import { useRef } from "react";
 
 const Contact = () => {
-  const contactRef = useRef<HTMLDivElement>(null);
-  useResizeOffsetTop({ ref: contactRef, name: "CONTACT" });
+  const { registerSection } = useSection();
 
   return (
-    <Box bgColor={"gray"} minH={`100vh`} ref={contactRef}>
+    <Box
+      bgColor={"gray"}
+      minH={`100vh`}
+      ref={(el) => {
+        if (!el) return;
+        registerSection("CONTACT", el);
+      }}
+    >
       <Text>Contact</Text>
     </Box>
   );
