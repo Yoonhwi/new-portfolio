@@ -25,7 +25,7 @@ const HomeInfo = () => {
       zIndex={1}
       justifyContent={"center"}
       alignItems={"center"}
-      bgColor={"rgba(0,0,0,0.1)"}
+      bgColor={"rgba(0,0,0,0.02)"}
       h={"100%"}
     >
       <Flex direction={"column"} gap={4} alignItems={"center"} minW={"500px"}>

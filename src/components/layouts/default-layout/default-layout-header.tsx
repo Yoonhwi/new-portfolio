@@ -1,6 +1,6 @@
 import { SectionName } from "@/constants";
 import { useSection } from "@/hooks";
-import { Flex, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef } from "react";
 
@@ -85,7 +85,7 @@ const DefaultLayoutHeader = () => {
   }, [currentSection]);
 
   return (
-    <>
+    <Box zIndex={99}>
       <Flex
         as={"header"}
         w={"100%"}
@@ -140,7 +140,7 @@ const DefaultLayoutHeader = () => {
           </HStack>
         </Flex>
       </Flex>
-    </>
+    </Box>
   );
 };
 
