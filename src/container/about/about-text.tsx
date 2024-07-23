@@ -2,9 +2,17 @@ import { Flex, Heading, Tag, Text } from "@chakra-ui/react";
 
 const AboutText = () => {
   return (
-    <Flex direction={"column"} gap={2} maxW={"550px"} ml={"auto"}>
-      <Heading size={"lg"}>윤승휘</Heading>
-      <Heading size={"md"}>1996.01.05</Heading>
+    <Flex
+      direction={"column"}
+      gap={4}
+      maxW={"550px"}
+      ml={{ base: "inherit", lg: "auto" }}
+    >
+      <Flex direction={"column"} gap={2}>
+        <Heading size={"lg"}>윤승휘</Heading>
+        <Heading size={"md"}>1996.01.05</Heading>
+      </Flex>
+
       <Flex direction={"column"} gap={1}>
         <Text fontWeight={"500"}>
           안녕하세요. <Tag p={1}>끈질긴 개발자 윤승휘</Tag> 입니다.
@@ -22,6 +30,11 @@ const AboutText = () => {
           자연스럽게 개발자가 되고 싶다는 꿈을 갖게 되었고, 현재는 그 꿈을
           이루기 위해 프론트엔드 개발자로 성장하고 있습니다.
         </Text>
+      </Flex>
+      <Flex gap={2}>
+        <Tag>#열정</Tag>
+        <Tag>#섬세함</Tag>
+        <Tag>#ISTP</Tag>
       </Flex>
     </Flex>
   );

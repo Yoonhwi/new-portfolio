@@ -6,7 +6,7 @@ interface CenterLayoutProps {
 const CenterLayout = ({ children }: CenterLayoutProps) => {
   return (
     <Flex justify={"center"} h={"100%"}>
-      <Flex w={{ base: "100%", xl: "1280px" }} direction={"column"}>
+      <Flex w={{ base: "100%", lg: "992px" }} direction={"column"}>
         {children}
       </Flex>
     </Flex>
