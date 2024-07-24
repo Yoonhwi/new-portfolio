@@ -3,11 +3,14 @@ import { Box } from "@chakra-ui/react";
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import HomeInfo from "./intro-text";
+import { ScrollDownAnimation } from "@/components";
 
 const Intro = () => {
-  const imageRef = useRef<HTMLDivElement>(null);
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
   const { registerSection } = useSection();
+
+  const introRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!imageRef.current) return;
@@ -18,7 +21,7 @@ const Intro = () => {
       },
     });
 
-    gsap.set(imageRef.current, {
+    tl.set(imageRef.current, {
       clipPath: "circle(0% at 100% 0)",
       scale: 1.5,
     });
@@ -30,16 +33,19 @@ const Intro = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const el = introRef.current;
+    if (!el) return;
+    registerSection("INTRO", el);
+  }, [registerSection]);
+
   return (
     <Box
       bgColor={`rgba(0,0,0,0.5)`}
       h={`100vh`}
       position="relative"
       overflow={"hidden"}
-      ref={(el) => {
-        if (!el) return;
-        registerSection("INTRO", el);
-      }}
+      ref={introRef}
     >
       <Box
         ref={imageRef}
@@ -54,6 +60,7 @@ const Intro = () => {
         backgroundPosition="center"
       />
       {isAnimationComplete && <HomeInfo />}
+      {isAnimationComplete && <ScrollDownAnimation />}
     </Box>
   );
 };

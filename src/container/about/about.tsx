@@ -1,92 +1,101 @@
-import { CenterLayout } from "@/components";
-import { useLayout, useSection } from "@/hooks";
-import { Box } from "@chakra-ui/react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Box, Button, Text } from "@chakra-ui/react";
+import AboutDescription from "./about-description";
+import AboutStacks from "./about-stacks";
+import { useSection } from "@/hooks";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useCallback, useEffect, useRef, useState } from "react";
-import AboutChild from "./about-child";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const [isTrigger, setIsTrigger] = useState(false);
-
+  const [type, setType] = useState("description");
   const { registerSection } = useSection();
-  const { isMobile } = useLayout();
 
   const aboutRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  const updateSection = useCallback(() => {
+  const renderItem = useMemo(() => {
+    switch (type) {
+      case "description":
+        return <AboutDescription />;
+      case "stacks":
+        return <AboutStacks />;
+      default:
+        return <Text>Error Type!!</Text>;
+    }
+  }, [type]);
+
+  const changeType = useCallback(
+    (newType: string) => {
+      if (newType === type) return;
+
+      const overlay = aboutRef.current?.querySelector(".overlay");
+      const content = contentRef.current;
+
+      if (!overlay || !content) return;
+
+      gsap.fromTo(
+        overlay,
+        {
+          yPercent: 100,
+        },
+        {
+          yPercent: -100,
+          duration: 1,
+          ease: "power2.inOut",
+          onComplete: () => {
+            setType(newType);
+            gsap.to(overlay, {
+              yPercent: 100,
+              duration: 1,
+              ease: "power2.inOut",
+            });
+          },
+        }
+      );
+    },
+    [type]
+  );
+
+  useEffect(() => {
     const el = aboutRef.current;
     if (!el) return;
     registerSection("ABOUT", el);
   }, [registerSection]);
 
-  useEffect(() => {
-    updateSection();
-  }, [updateSection]);
-
-  useEffect(() => {
-    const about = aboutRef.current;
-    if (!about) return;
-
-    const aboutTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: about,
-        start: "top 60%",
-        onEnter: () => {
-          setIsTrigger(true);
-        },
-      },
-    });
-
-    aboutTl.fromTo(
-      about.querySelector(".overlay"),
-      {
-        clipPath: "inset(0 0 100% 0)",
-      },
-      {
-        clipPath: "inset(0 0 0% 0)",
-        duration: 1,
-        ease: "power2.inOut",
-      }
-    );
-
-    return () => {
-      aboutTl.kill();
-    };
-  }, [isMobile, setIsTrigger]);
-
   return (
     <Box
-      position="relative"
-      minH={`100vh`}
+      position={"relative"}
       ref={aboutRef}
-      py={20}
-      px={12}
-      backgroundImage="url('./img/portfolio_bg.jpg')"
-      backgroundSize="cover"
-      backgroundRepeat="no-repeat"
+      backgroundImage={`url(./img/portfolio_bg.jpg)`}
+      backgroundSize={"cover"}
+      backgroundRepeat={"no-repeat"}
+      overflow={"hidden"}
     >
       <Box
         className="overlay"
         position="absolute"
+        backgroundImage={`url(./img/portfolio_bg.jpg)`}
+        backgroundSize={"cover"}
+        backgroundRepeat={"no-repeat"}
+        transform={"translateY(100%)"}
         top={0}
         left={0}
         right={0}
         bottom={0}
-        backgroundColor="rgb(27,29,32)"
-        backgroundImage={
-          isTrigger && isMobile ? `url('./img/portfolio_bg7.jpg')` : "none"
-        }
-        backgroundSize="cover"
-        backgroundRepeat="no-repeat"
-        clipPath="inset(0 0 100% 0)"
+        zIndex={3}
       />
-
-      <CenterLayout>
-        {isTrigger && <AboutChild isMobile={isMobile} />}
-      </CenterLayout>
+      <Box ref={contentRef}>{renderItem}</Box>
+      <Button
+        position={"absolute"}
+        bottom={20}
+        left={"50%"}
+        transform={`translateX(-50%)`}
+        onClick={() =>
+          changeType(type === "description" ? "stacks" : "description")
+        }
+        zIndex={2}
+      >
+        {type === "description" ? "Stack" : "소개"} 자세히보기
+      </Button>
     </Box>
   );
 };

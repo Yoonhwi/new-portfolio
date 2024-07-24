@@ -97,8 +97,6 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     [sectionOffsets]
   );
 
-  console.log(sectionOffsets, "sectionOffsets");
-
   return (
     <SectionContext.Provider
       value={{ currentSection, registerSection, scrollToSection }}
