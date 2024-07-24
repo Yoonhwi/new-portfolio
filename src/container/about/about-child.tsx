@@ -13,6 +13,7 @@ const AboutChild = ({ isMobile }: AboutChildProps) => {
   useEffect(() => {
     const tl = gsap.timeline({
       defaults: { duration: 2, ease: "power3.out" },
+      delay: 1,
     });
 
     tl.fromTo(

@@ -15,20 +15,30 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   );
 
   // 윈도우가 리사이즈될 때마다 각 섹션의 offsetTop을 계산하여 저장합니다.
+  // ref의 크기가 변경되면 offsetTop이 변경되기 때문에 이를 감지하여 저장합니다.
   useEffect(() => {
+    const sections = Object.entries(sectionsRef.current);
+
     const handleResize = () => {
-      const newSections = Object.entries(sectionsRef.current).reduce(
-        (acc, [k, v]) => {
-          if (!v) return acc;
-          return { ...acc, [k]: v.offsetTop };
-        },
-        {} as Record<string, number>
-      );
+      const newSections = sections.reduce((acc, [k, v]) => {
+        if (!v) return acc;
+        return { ...acc, [k]: v.offsetTop };
+      }, {} as Record<string, number>);
       setSectionOffsets(newSections);
     };
+
+    const reszieObserver = new ResizeObserver(handleResize);
+
+    sections.forEach(([_, v]) => {
+      if (v) reszieObserver.observe(v);
+    });
+
     handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      reszieObserver.disconnect();
+    };
   }, []);
 
   // 윈도우에 스크롤 이벤트를 등록합니다.
@@ -86,6 +96,8 @@ const DefaultLayout = ({ children }: DefaultLayoutProps) => {
     },
     [sectionOffsets]
   );
+
+  console.log(sectionOffsets, "sectionOffsets");
 
   return (
     <SectionContext.Provider

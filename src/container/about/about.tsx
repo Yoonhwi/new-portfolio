@@ -3,7 +3,7 @@ import { useLayout, useSection } from "@/hooks";
 import { Box } from "@chakra-ui/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import AboutChild from "./about-child";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -15,6 +15,16 @@ const About = () => {
   const { isMobile } = useLayout();
 
   const aboutRef = useRef<HTMLDivElement>(null);
+
+  const updateSection = useCallback(() => {
+    const el = aboutRef.current;
+    if (!el) return;
+    registerSection("ABOUT", el);
+  }, [registerSection]);
+
+  useEffect(() => {
+    updateSection();
+  }, [updateSection]);
 
   useEffect(() => {
     const about = aboutRef.current;
@@ -37,7 +47,7 @@ const About = () => {
       },
       {
         clipPath: "inset(0 0 0% 0)",
-        duration: 2,
+        duration: 1,
         ease: "power2.inOut",
       }
     );
@@ -51,11 +61,7 @@ const About = () => {
     <Box
       position="relative"
       minH={`100vh`}
-      ref={(el) => {
-        if (!el) return;
-        registerSection("ABOUT", el);
-        aboutRef.current = el;
-      }}
+      ref={aboutRef}
       py={20}
       px={12}
       backgroundImage="url('./img/portfolio_bg.jpg')"
