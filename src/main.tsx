@@ -5,8 +5,8 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 const theme = extendTheme({
   fonts: {
-    heading: `"Pretendard Variable", "Noto Sans KR", Poppins, sans-serif`,
-    body: `"Pretendard Variable", "Noto Sans KR", Poppins, sans-serif`,
+    heading: `"Poppins", "Noto Sans KR", sans-serif`,
+    body: `"Poppins", "Noto Sans KR", sans-serif`,
   },
 });
 

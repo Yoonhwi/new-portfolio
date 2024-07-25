@@ -94,7 +94,7 @@ const About = () => {
         }
         zIndex={2}
       >
-        {type === "description" ? "Stack" : "소개"} 자세히보기
+        {type === "description" ? "자세히 보기" : "간단히 보기"}
       </Button>
     </Box>
   );

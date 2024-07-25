@@ -1,4 +1,4 @@
-import { About, Contact, Intro, Project } from "@/container";
+import { About, Contact, Intro, Project, Stacks } from "@/container";
 import { DefaultLayout } from "@/components";
 
 function App() {
@@ -6,6 +6,7 @@ function App() {
     <DefaultLayout>
       <Intro />
       <About />
+      <Stacks />
       <Project />
       <Contact />
     </DefaultLayout>

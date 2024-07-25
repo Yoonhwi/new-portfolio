@@ -5,7 +5,7 @@ const GlobalStyles = () => {
     <Global
       styles={`
         body {
-          font-family: "Pretendard Variable", "Noto Sans KR", Poppins, sans-serif;
+          font-family: "Pretendard Variable", "Noto Sans KR", "Poppins", sans-serif;
         }
       `}
     />

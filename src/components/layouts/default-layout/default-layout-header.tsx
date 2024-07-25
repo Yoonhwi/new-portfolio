@@ -11,6 +11,7 @@ interface NavLinkProps {
 const navLinks: NavLinkProps[] = [
   { name: "INTRO" },
   { name: "ABOUT" },
+  { name: "STACKS" },
   { name: "PROJECTS" },
   { name: "CONTACT" },
 ];
