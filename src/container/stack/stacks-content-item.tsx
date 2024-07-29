@@ -1,6 +1,18 @@
 import { Flex, Box, Heading, Image, Text } from "@chakra-ui/react";
 
-const StacksContentItem = () => {
+interface StacksContentItemProps {
+  imgSrc: string;
+  alt: string;
+  title: string;
+  description: string;
+}
+
+const StacksContentItem = ({
+  imgSrc,
+  alt,
+  title,
+  description,
+}: StacksContentItemProps) => {
   return (
     <Flex
       alignItems={"center"}
@@ -18,20 +30,11 @@ const StacksContentItem = () => {
       maxW={"300px"}
       flexShrink={0}
     >
-      <Image
-        src="./img/icon_html.png"
-        w={"50px"}
-        h={"50px"}
-        alt="icon_html"
-        flexShrink={0}
-      />
+      <Image src={imgSrc} w={"50px"} h={"50px"} alt={alt} flexShrink={0} />
       <Box className="hidden-content" bgColor={"#553E4E"} p={4} display="none">
         <Flex direction={"column"} gap={1}>
-          <Heading size={"sm"}>HTML</Heading>
-          <Text fontSize={"13px"}>
-            크로스 브라우저 호환성을 고려해, 웹표준을 준수하며 시멘틱태그를
-            이용해 마크업 할 수 있습니다.
-          </Text>
+          <Heading size={"sm"}>{title}</Heading>
+          <Text fontSize={"13px"}>{description}</Text>
         </Flex>
       </Box>
     </Flex>

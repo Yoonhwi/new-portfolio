@@ -25,6 +25,9 @@ const IconAnimation = ({ icon, label, link }: IconAnimationProps) => {
           window.open(link, "_blank");
         }}
         cursor={"pointer"}
+        filter={`drop-shadow(0 0 2px rgba(213,213,213, 0.7))
+        drop-shadow(0 0 5px rgba(213,213,213, 0.7))
+        drop-shadow(0 0 10px rgba(213,213,213, 0.7));`}
       >
         <IconButton
           isRound

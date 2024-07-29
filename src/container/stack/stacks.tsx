@@ -21,7 +21,7 @@ const Stacks = () => {
       bgColor={"#6B515F"}
       ref={stacksRef}
       opacity={0.9}
-      py={32}
+      py={20}
     >
       <CenterLayout>
         <Flex direction={"column"} w={"100%"} gap={20} color={"white"}>

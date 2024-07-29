@@ -5,28 +5,35 @@ import gsap from "gsap";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { FaCircle } from "react-icons/fa6";
 
-const dummyName: SectionName[] = ["INTRO", "ABOUT", "PROJECTS", "CONTACT"];
+const dummyName: SectionName[] = [
+  "INTRO",
+  "ABOUT",
+  "STACKS",
+  "PROJECTS",
+  "CONTACT",
+];
 
 const DefaultLayoutDotnav = () => {
   const { currentSection, scrollToSection } = useSection();
 
   const dotNavRef = useRef<HTMLDivElement>(null);
 
+  const isDarkBg = currentSection === "ABOUT" || currentSection === "CONTACT";
+
   const backgroundColor = useMemo(() => {
-    return currentSection === "ABOUT" || currentSection === "CONTACT"
-      ? "blackAlpha.200"
-      : "whiteAlpha.100";
-  }, [currentSection]);
+    return isDarkBg ? "whiteAlpha.800" : "blackAlpha.200";
+  }, [isDarkBg]);
 
   const getDotColor = useCallback(
     (isCurrent: boolean) => {
-      if (currentSection === "ABOUT" || currentSection === "CONTACT") {
-        return isCurrent ? "white" : "blackAlpha.300";
+      if (isDarkBg) {
+        return isCurrent ? "black" : "blackAlpha.300";
       }
       return isCurrent ? "white" : "blackAlpha.300";
     },
-    [currentSection]
+    [isDarkBg]
   );
+  console.log(isDarkBg);
 
   useEffect(() => {
     if (!dotNavRef.current) return;
@@ -34,6 +41,7 @@ const DefaultLayoutDotnav = () => {
       defaults: { duration: 1, ease: "power3.out" },
       delay: 2.5,
     });
+
     tl.fromTo(
       dotNavRef.current,
       {
@@ -42,7 +50,7 @@ const DefaultLayoutDotnav = () => {
       },
       {
         opacity: 1,
-        x: "0%",
+        x: 0,
       }
     );
   }, []);
@@ -62,7 +70,8 @@ const DefaultLayoutDotnav = () => {
       transform={"translateY(-50%)"}
       color={"white"}
       ref={dotNavRef}
-      transition={"all 0.2s ease"}
+      transition={"all 1s ease"}
+      className="dot"
     >
       {dummyName.map((v) => {
         return (

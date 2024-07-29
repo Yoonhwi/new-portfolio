@@ -1,4 +1,4 @@
-import { SectionContext } from "@/hooks/useSection";
+import { SectionContext } from "@/hooks/use-section";
 import { useCallback, useEffect, useRef, useState } from "react";
 import DefaultLayoutDotnav from "./default-layout-dotnav";
 import DefaultLayoutHeader from "./default-layout-header";

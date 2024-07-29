@@ -27,10 +27,11 @@ const DefaultLayoutHeader = () => {
       defaults: { duration: 1, ease: "power3.out" },
       delay: 2,
     });
+
     tl.fromTo(
       boxRef.current,
       {
-        opcacity: 0,
+        opacity: 0,
         x: "100%",
       },
       {
