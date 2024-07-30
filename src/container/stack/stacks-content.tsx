@@ -1,5 +1,6 @@
 import { Box, Flex, Heading } from "@chakra-ui/react";
 import StacksContentItem from "./stacks-content-item";
+import { darkBgColor } from "@/constants";
 
 const StacksContent = () => {
   return (
@@ -8,7 +9,7 @@ const StacksContent = () => {
         <Box
           borderRadius={24}
           border={"2px solid #fff"}
-          bgColor={"#553E4E"}
+          bgColor={darkBgColor}
           px={6}
           py={2}
           boxShadow={"dark-lg"}
@@ -38,7 +39,7 @@ const StacksContent = () => {
         <Box
           borderRadius={24}
           border={"2px solid #fff"}
-          bgColor={"#553E4E"}
+          bgColor={darkBgColor}
           px={6}
           py={2}
           boxShadow={"dark-lg"}

@@ -4,6 +4,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import StacksHead from "./stacks-head";
 import StacksContent from "./stacks-content";
+import { darkBgColor, parentBoxShadow } from "@/constants";
 
 const Stacks = () => {
   const stacksRef = useRef<HTMLDivElement>(null);
@@ -18,10 +19,12 @@ const Stacks = () => {
   return (
     <Box
       minH={"100vh"}
-      bgColor={"#6B515F"}
+      bgColor={darkBgColor}
       ref={stacksRef}
-      opacity={0.9}
       py={20}
+      boxShadow={parentBoxShadow}
+      position={"relative"}
+      zIndex={2}
     >
       <CenterLayout>
         <Flex direction={"column"} w={"100%"} gap={20} color={"white"}>

@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaBlog } from "react-icons/fa6";
 import IconAnimation from "./contact-icon-animation";
 import ContactText from "./contact-text";
+import { darkBgColor } from "@/constants";
 
 const Contact = () => {
   const { registerSection } = useSection();
@@ -20,8 +21,7 @@ const Contact = () => {
 
   return (
     <Box
-      bgColor={"rgb(27, 27, 27)"}
-      bgPos={`center`}
+      bgColor={darkBgColor}
       color={`white`}
       minH={`100vh`}
       ref={contactRef}

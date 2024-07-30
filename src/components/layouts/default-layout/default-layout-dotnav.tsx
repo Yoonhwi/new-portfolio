@@ -18,7 +18,7 @@ const DefaultLayoutDotnav = () => {
 
   const dotNavRef = useRef<HTMLDivElement>(null);
 
-  const isDarkBg = currentSection === "ABOUT" || currentSection === "CONTACT";
+  const isDarkBg = currentSection !== "INTRO";
 
   const backgroundColor = useMemo(() => {
     return isDarkBg ? "whiteAlpha.800" : "blackAlpha.200";
@@ -33,7 +33,6 @@ const DefaultLayoutDotnav = () => {
     },
     [isDarkBg]
   );
-  console.log(isDarkBg);
 
   useEffect(() => {
     if (!dotNavRef.current) return;
@@ -65,7 +64,7 @@ const DefaultLayoutDotnav = () => {
       direction={"column"}
       gap={6}
       backgroundColor={backgroundColor}
-      zIndex={3}
+      zIndex={999}
       borderRadius={"4px"}
       transform={"translateY(-50%)"}
       color={"white"}

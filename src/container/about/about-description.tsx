@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import AboutChild from "./about-child";
+import { darkBgColor } from "@/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,7 +65,7 @@ const AboutDescription = () => {
         left={0}
         right={0}
         bottom={0}
-        backgroundColor="rgb(27,29,32)"
+        backgroundColor={darkBgColor}
         backgroundImage={
           isTrigger && isMobile ? `url('./img/portfolio_bg7.jpg')` : "none"
         }

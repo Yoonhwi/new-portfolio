@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import HomeInfo from "./intro-text";
 import { ScrollDownAnimation } from "@/components";
+import { parentBoxShadow } from "@/constants";
 
 const Intro = () => {
   const [isAnimationComplete, setIsAnimationComplete] = useState(false);
@@ -46,6 +47,8 @@ const Intro = () => {
       position="relative"
       overflow={"hidden"}
       ref={introRef}
+      boxShadow={parentBoxShadow}
+      zIndex={4}
     >
       <Box
         ref={imageRef}

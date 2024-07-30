@@ -4,6 +4,7 @@ import AboutDescription from "./about-description";
 import AboutStacks from "./about-stacks";
 import { useSection } from "@/hooks";
 import gsap from "gsap";
+import { parentBoxShadow } from "@/constants";
 
 const About = () => {
   const [type, setType] = useState("description");
@@ -69,6 +70,8 @@ const About = () => {
       backgroundSize={"cover"}
       backgroundRepeat={"no-repeat"}
       overflow={"hidden"}
+      boxShadow={parentBoxShadow}
+      zIndex={3}
     >
       <Box
         className="overlay"
