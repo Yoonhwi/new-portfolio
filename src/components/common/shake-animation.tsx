@@ -21,8 +21,6 @@ const ShakeAnimation = ({ children }: ShakeAnimationProps) => {
     if (!box || !content) return;
 
     setWidth(content.offsetWidth);
-    console.log(content.offsetWidth);
-
     let tl: gsap.core.Timeline;
 
     const handleMouseEnter = () => {

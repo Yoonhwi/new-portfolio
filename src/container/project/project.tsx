@@ -66,6 +66,7 @@ const Project = () => {
           alignItems={"center"}
           position={"relative"}
           overflow={"hidden"}
+          py={4}
         >
           <Heading size={"2xl"}>PROJECTS</Heading>
           <ProjectPortfolio />

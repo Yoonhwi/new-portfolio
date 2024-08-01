@@ -20,7 +20,6 @@ const StacksContentItem = ({
       justifyContent={"center"}
       bgColor={darkBgColor}
       p={3}
-      boxShadow={"dark-lg"}
       border={"2px solid #fff"}
       gap={4}
       _hover={{
