@@ -38,7 +38,7 @@ const DefaultLayoutDotnav = () => {
     if (!dotNavRef.current) return;
     const tl = gsap.timeline({
       defaults: { duration: 1, ease: "power3.out" },
-      delay: 2.5,
+      delay: 1.5,
     });
 
     tl.fromTo(
