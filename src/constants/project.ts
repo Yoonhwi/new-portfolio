@@ -13,3 +13,12 @@ export const portfolioData: ProjectData = {
   ],
   tags: ["#React", "#TypeScript", "#반응형"],
 };
+
+export const joinusData: ProjectData = {
+  name: "Join-us",
+  description: [
+    "Join-US는 공통의 관심사나 목적을 가진 사람들이 한데 모여 소통 및 다양한 활동을 할 수 있는 플랫폼입니다.",
+    "Git을 이용한 협업을 통해 백엔드 개발자와 함께 API명세를 작성하고, 이슈를 남기며 소통하는 과정을 통해 협업 과정에 대해 배울 수 있었습니다.",
+  ],
+  tags: ["#React", "#TypeScript", "#React-Query", "#Chakra-UI"],
+};

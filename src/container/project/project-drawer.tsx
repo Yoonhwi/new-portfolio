@@ -12,7 +12,9 @@ import {
 interface PortfolioDrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  data: any;
+  data: {
+    name: string;
+  };
 }
 
 const ProjectDrawer = ({ isOpen, onClose, data }: PortfolioDrawerProps) => {
