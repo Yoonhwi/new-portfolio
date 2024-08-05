@@ -14,6 +14,7 @@ interface PortfolioDrawerProps {
   onClose: () => void;
   data: {
     name: string;
+    drawerContent: () => JSX.Element;
   };
 }
 
@@ -24,7 +25,7 @@ const ProjectDrawer = ({ isOpen, onClose, data }: PortfolioDrawerProps) => {
       <DrawerContent maxW={"992px"}>
         <DrawerCloseButton />
         <DrawerHeader>{data?.name}</DrawerHeader>
-        <DrawerBody overflowY={"auto"}></DrawerBody>
+        <DrawerBody overflowY={"auto"}>{data.drawerContent()}</DrawerBody>
         <DrawerFooter>
           <Button onClick={onClose}>close</Button>
         </DrawerFooter>

@@ -1,10 +1,14 @@
+import {
+  calendarData,
+  cookaData,
+  joinusData,
+  portfolioData,
+} from "@/constants";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
-import ProjectJoinus from "./project-joinus";
-import ProjectPortfolio from "./project-portfolio";
+import ProjectItem from "./project-item";
 
 interface ProjectSwiperProps {
   setCurrentIndex: (index: number) => void;
@@ -13,10 +17,10 @@ interface ProjectSwiperProps {
 }
 
 const dummyData = [
-  <ProjectPortfolio />,
-  <ProjectJoinus />,
-  <ProjectPortfolio />,
-  <ProjectJoinus />,
+  <ProjectItem data={portfolioData} />,
+  <ProjectItem data={joinusData} />,
+  <ProjectItem data={calendarData} />,
+  <ProjectItem data={cookaData} />,
 ];
 
 const ProjectSwiper = ({
@@ -37,9 +41,7 @@ const ProjectSwiper = ({
     <Swiper
       autoHeight
       grabCursor
-      effect={"coverflow"}
       speed={700}
-      modules={[EffectCoverflow]}
       className="mySwiper"
       onSwiper={handleSwiper}
       onSlideChange={handleSlideChange}
