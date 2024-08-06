@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Image,
+  Tag,
   Text,
 } from "@chakra-ui/react";
 import DrawerStacks from "./drawer-stacks";
@@ -57,7 +58,7 @@ const CookaDrawer = () => {
         <DrawerStacks tags={Stacks} />
       </Flex>
       <Box position="relative">
-        <Divider />
+        <Divider borderWidth={"2px"} />
         <AbsoluteCenter bg="white" px="4">
           <Heading size={"sm"}>구현기능</Heading>
         </AbsoluteCenter>
@@ -90,40 +91,45 @@ const CookaDrawer = () => {
         </Flex>
       </Flex>
 
-      <Flex gap={"4"}>
-        <Box flex={1} boxShadow={"md"}>
-          <Image src="img/project_cookapost.png" alt="cookapost" />
-        </Box>
-        <Flex gap={2} direction={"column"} flex={1} my={"12"}>
-          <Heading size={"sm"}>⚡ 포스팅</Heading>
-          <Flex direction={"column"} gap={1}>
-            <Text>
-              이미지나, 폰트 스타일 등 게시글의 퀄리티를 높이기 위해 text-area를
-              대신하여 React-quill 라이브러리를 사용하였습니다.
-            </Text>
-            <Text>해당 글작성자는 포스팅을 수정, 삭제할 수 있습니다.</Text>
-          </Flex>
+      <Flex gap={"4"} direction={"column"}>
+        <Heading size={"sm"}>포스팅</Heading>
+        <Flex boxShadow={"md"} p={8}>
+          <Box flex={1}>
+            <Image src="img/project_cookapost.png" alt="cookapost" />
+          </Box>
+          <Box flex={1}>
+            <Image src="img/project_cookaposting.png" alt="cookaposting" />
+          </Box>
         </Flex>
-      </Flex>
 
-      <Flex gap={"4"}>
-        <Box flex={1} boxShadow={"md"}>
-          <Image src="img/project_cookaposting.png" alt="cookaposting" />
-        </Box>
-        <Flex gap={2} direction={"column"} flex={1} my={"12"}>
-          <Heading size={"sm"}>⚡ 좋아요 / 댓글</Heading>
-          <Flex direction={"column"} gap={1}>
-            <Text>
-              관계형 데이터베이스를 바탕으로 게시글당 좋아요, 댓글을
-              구현하였습니다.
-            </Text>
-            <Text>해당 댓글작성자는 수정, 삭제할 수 있습니다.</Text>
-          </Flex>
+        <Flex direction={"column"} gap={1}>
+          <Text>
+            이미지나, 폰트 스타일 등 게시글의 퀄리티를 높이기 위해 text-area를
+            대신하여 React-quill 라이브러리를 사용하였습니다.
+          </Text>
+          <Tag
+            onClick={() =>
+              window.open("https://winhwi.tistory.com/5", "_blank")
+            }
+            width={"fit-content"}
+            _hover={{
+              cursor: "pointer",
+            }}
+            my={1}
+          >
+            React-quill 관련 트러블 슈팅 자세히보기
+          </Tag>
+          <Text>해당 글작성자는 포스팅을 수정, 삭제할 수 있습니다.</Text>
+          <Text>
+            관계형 데이터베이스를 바탕으로 게시글당 좋아요, 댓글을
+            구현하였습니다.
+          </Text>
+          <Text>해당 댓글작성자는 수정, 삭제할 수 있습니다.</Text>
         </Flex>
       </Flex>
 
       <Flex direction={"column"} gap={"4"}>
-        <Heading size={"sm"}>⚡ 검색</Heading>
+        <Heading size={"sm"}>검색</Heading>
         <Image src="img/project_cookasearch.png" alt="cookasearch" />
         <Flex direction={"column"} gap={1}>
           <Text>
@@ -140,7 +146,7 @@ const CookaDrawer = () => {
       </Flex>
 
       <Flex direction={"column"} gap={"4"}>
-        <Heading size={"sm"}>⚡ 화제의 게시글</Heading>
+        <Heading size={"sm"}>화제의 게시글</Heading>
         <Image src="img/project_cookamain.png" alt="cookamain" />
         <Flex direction={"column"} gap={1}>
           <Text>
@@ -150,7 +156,7 @@ const CookaDrawer = () => {
       </Flex>
 
       <Flex direction={"column"} gap={"4"}>
-        <Heading size={"sm"}>⚡ 마이페이지</Heading>
+        <Heading size={"sm"}>마이페이지</Heading>
         <Image src="img/project_cookamypage.png" alt="cookamypage" />
         <Flex direction={"column"} gap={1}>
           <Text>
@@ -163,7 +169,7 @@ const CookaDrawer = () => {
       </Flex>
 
       <Flex direction={"column"} gap={"4"}>
-        <Heading size={"sm"}>⚡ 배포</Heading>
+        <Heading size={"sm"}>배포</Heading>
         <Flex direction={"column"} gap={1}>
           <Text>
             AWS의 EC2를 이용하여 서버를 구축하고, pm2 를 이용하여 백그라운드로
@@ -178,19 +184,19 @@ const CookaDrawer = () => {
       </Flex>
 
       <Flex direction={"column"} gap={"4"}>
-        <Heading size={"sm"}>🚩 마치며 느낀점</Heading>
+        <Heading size={"sm"}>마치며 느낀점</Heading>
         <Flex direction={"column"} gap={1}>
           <Text>
-            비교적 오랜 시간 소요되었다고 생각합니다.
-            <br /> Next.js, TypeScript에 익숙하지 않았고, 백엔드 서버를
-            구축하고, MySQL을 사용하는 것에 무지했기에 공부가 필요했습니다.
-            <br />
+            비교적 오랜 시간 소요되었다고 생각합니다. Next.js, TypeScript에
+            익숙하지 않았고, 백엔드 서버를 구축하고, MySQL을 사용하는 것에
+            무지했기에 공부가 필요했습니다.
+          </Text>
+          <Text>
             프로젝트를 진행하며 해당 기술 스택에 대해 이해도가 높아졌다고
             생각합니다.
           </Text>
           <Text>
             프로젝트를 진행하면서, 백엔드와 프론트엔드의 연결을 이해하고,
-            <br />
             데이터베이스를 어떻게 설계하고, 관리하는지에 대해 배울 수
             있었습니다.
           </Text>
@@ -204,8 +210,8 @@ const CookaDrawer = () => {
           </Text>
           <Text>
             반복적인 코드를 사용하면 가독성이 떨어지고 수정이 매우 힘들어진다는
-            걸 알게 됐고,
-            <br /> 코드에 대한 설계와 리팩토링의 중요성을 깨닫게 되었습니다.
+            걸 알게 됐고, 코드에 대한 설계와 리팩토링의 중요성을 깨닫게
+            되었습니다.
           </Text>
         </Flex>
       </Flex>
