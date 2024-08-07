@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const useTextAnimation = (stagger = 0.1) => {
+const useTextAnimation = (stagger = 0.05) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const useTextAnimation = (stagger = 0.1) => {
     const animation = gsap.from(spans, {
       y: "100%",
       opacity: 0,
-      duration: 1.5,
+      duration: 1,
       ease: "circ.out",
       stagger,
 

@@ -40,7 +40,6 @@ const ProjectSwiper = ({
   return (
     <Swiper
       autoHeight
-      grabCursor
       speed={700}
       className="mySwiper"
       onSwiper={handleSwiper}

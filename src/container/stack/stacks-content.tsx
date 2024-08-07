@@ -1,4 +1,4 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import StacksContentItem from "./stacks-content-item";
 import { darkBgColor } from "@/constants";
 
@@ -48,16 +48,16 @@ const StacksContent = () => {
     <Flex direction={"column"} gap={20}>
       {stacks.map((item) => {
         return (
-          <Flex direction={"column"} gap={12} key={item.name}>
+          <Flex direction={"column"} gap={8} key={item.name}>
             <Box
               borderRadius={24}
-              border={"2px solid #fff"}
+              border={"2px solid rgb(40, 40, 40)"}
               bgColor={darkBgColor}
               px={6}
               py={2}
               width={"fit-content"}
             >
-              <Heading size={"sm"}>{item.name}</Heading>
+              <Text>{item.name}</Text>
             </Box>
             <Flex gap={8} alignItems={"center"}>
               {item.stacks.map((stack) => (

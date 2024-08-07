@@ -6,6 +6,7 @@ import AboutText from "./about-text";
 interface AboutChildProps {
   isMobile: boolean;
 }
+
 const AboutChild = ({ isMobile }: AboutChildProps) => {
   const childRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);

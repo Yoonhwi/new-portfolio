@@ -3,7 +3,7 @@ import { useTextAnimation } from "@/hooks";
 
 const StacksHead = () => {
   const headRef = useTextAnimation();
-  const subRef = useTextAnimation(0.06);
+  const subRef = useTextAnimation(0.03);
 
   return (
     <Flex direction={"column"} alignItems={"center"} gap={4}>

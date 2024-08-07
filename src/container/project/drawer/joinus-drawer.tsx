@@ -36,7 +36,7 @@ const JoinusDrawer = () => {
       </Flex>
 
       <Flex direction={"column"} gap={2}>
-        <Heading size={"sm"}> 소개</Heading>
+        <Heading size={"sm"}>소개</Heading>
         <Flex direction={"column"} gap={1}>
           <Text>프론트엔드2명, 백엔드1명 총 3인의 팀 프로젝트입니다.</Text>
           <Text>
@@ -66,7 +66,7 @@ const JoinusDrawer = () => {
       </Box>
 
       <Flex direction={"column"} gap={2}>
-        <Heading size={"sm"}> 공통</Heading>
+        <Heading size={"sm"}>공통</Heading>
         <Center boxShadow={"md"} p={1}>
           <Image
             src="img/project_joinusinfinitescroll.gif"
