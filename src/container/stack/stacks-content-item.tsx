@@ -65,7 +65,6 @@ const StacksContentItem = ({
 
   const handleMouseEnter = () => {
     timeline?.play();
-    console.log(timeline);
   };
 
   const handleMouseLeave = () => {

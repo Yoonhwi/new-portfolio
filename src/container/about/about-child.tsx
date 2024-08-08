@@ -54,7 +54,9 @@ const AboutChild = ({ isMobile }: AboutChildProps) => {
         justifyContent={"center"}
         gap={24}
       >
-        <Heading size={"3xl"}>THE ONLY LIMIT IS MY EFFORT !</Heading>
+        <Heading size={"3xl"} display={{ base: "none", md: "block" }}>
+          THE ONLY LIMIT IS MY EFFORT !
+        </Heading>
         <AboutText />
       </Flex>
     </Box>

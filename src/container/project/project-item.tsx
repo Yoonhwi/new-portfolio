@@ -8,8 +8,9 @@ interface ProjectItemProps {
 }
 const ProjectItem = ({ data }: ProjectItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Flex gap={6} direction={"column"} maxW={"800px"}>
+    <Flex gap={6} direction={"column"} maxW={{ base: "100%", lg: "800px" }}>
       <Image src={data.imgSrc} maxH={"400px"} />
       <Heading size={"lg"}>{data.name}</Heading>
 

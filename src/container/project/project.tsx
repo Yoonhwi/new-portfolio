@@ -1,6 +1,6 @@
 import { CenterLayout } from "@/components";
 import { darkBgColor, parentBoxShadow } from "@/constants";
-import { useSection } from "@/hooks";
+import { useLayout, useSection } from "@/hooks";
 import { Box, Flex, Heading, Icon } from "@chakra-ui/react";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -13,6 +13,7 @@ const dummy = [{}, {}, {}, {}];
 const Project = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const { layout } = useLayout();
 
   const { registerSection } = useSection();
   const projectRef = useRef<HTMLDivElement>(null);
@@ -79,7 +80,11 @@ const Project = () => {
         >
           <Heading size={"2xl"}>PROJECTS</Heading>
 
-          <Flex maxW={"800px"} overflow={"hidden"} minH={"700px"}>
+          <Flex
+            maxW={{ base: "100%", lg: "800px" }}
+            overflow={"hidden"}
+            px={layout === "medium" ? 12 : 0}
+          >
             <ProjectSwiper
               setCurrentIndex={setCurrentIndex}
               setSwiper={setSwiper}
@@ -100,6 +105,7 @@ const Project = () => {
               if (!swiper) return;
               swiper.slidePrev();
             }}
+            display={{ base: "none", md: "block" }}
           >
             <Icon as={MdKeyboardArrowLeft} fontSize={"60px"} opacity={0.5} />
           </Box>
@@ -114,6 +120,7 @@ const Project = () => {
             }}
             opacity={currentIndex === dummy.length - 1 ? 0 : 1}
             transition={"all 0.3s ease"}
+            display={{ base: "none", md: "block" }}
             onClick={() => {
               if (!swiper) return;
               swiper.slideNext();
