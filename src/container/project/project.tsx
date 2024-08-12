@@ -1,6 +1,11 @@
 import { CenterLayout } from "@/components";
-import { darkBgColor, parentBoxShadow } from "@/constants";
-import { useLayout, useSection } from "@/hooks";
+import { darkBgColor, lightFilter, parentBoxShadow } from "@/constants";
+import {
+  useBoxScaleAnimation,
+  useLayout,
+  useSection,
+  useTextAnimation,
+} from "@/hooks";
 import { Box, Flex, Heading, Icon } from "@chakra-ui/react";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -19,6 +24,8 @@ const Project = () => {
   const projectRef = useRef<HTMLDivElement>(null);
   const arrowLeftRef = useRef<HTMLDivElement>(null);
   const arrowRightRef = useRef<HTMLDivElement>(null);
+  const headRef = useTextAnimation();
+  const scaleRef = useBoxScaleAnimation();
 
   useEffect(() => {
     const el = projectRef.current;
@@ -77,8 +84,11 @@ const Project = () => {
           position={"relative"}
           overflow={"hidden"}
           py={4}
+          ref={scaleRef}
         >
-          <Heading size={"2xl"}>PROJECTS</Heading>
+          <Heading size={"2xl"} ref={headRef}>
+            PROJECTS
+          </Heading>
 
           <Flex
             maxW={{ base: "100%", lg: "800px" }}
@@ -139,14 +149,7 @@ const Project = () => {
                   bgColor={"white"}
                   borderRadius={"50%"}
                   opacity={index === currentIndex ? 1 : 0.3}
-                  filter={
-                    index === currentIndex
-                      ? `drop-shadow(0 0 2px rgba(213,213,213, 0.7))
-                    drop-shadow(0 0 5px rgba(213,213,213, 0.7))
-                    drop-shadow(0 0 10px rgba(213,213,213, 0.7));`
-                      : `drop-shadow(0 0 2px rgba(213,213,213, 0.7))
-                    drop-shadow(0 0 5px rgba(213,213,213, 0.7));`
-                  }
+                  filter={lightFilter}
                   _hover={{
                     opacity: 0.7,
                     cursor: "pointer",

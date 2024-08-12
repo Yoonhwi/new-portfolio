@@ -1,13 +1,18 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
-import StacksContentItem from "./stacks-content-item";
 import { darkBgColor, stacks } from "@/constants";
+import { WideViewStacksBox } from "./pc-view";
+import { useBoxScaleAnimation, useLayout } from "@/hooks";
+import { MobileViewStacksBox } from "./mobile-view";
 
 const StacksContent = () => {
+  const scaleRef = useBoxScaleAnimation();
+
+  const { isMobile } = useLayout();
   return (
-    <Flex direction={"column"} gap={20}>
+    <Flex direction={"column"} gap={12} p={8} ref={scaleRef}>
       {stacks.map((item) => {
         return (
-          <Flex direction={"column"} gap={4} key={item.name}>
+          <Flex direction={"column"} gap={4} key={item.name} flex={1}>
             <Box
               borderRadius={24}
               border={"2px solid rgb(40, 40, 40)"}
@@ -18,17 +23,11 @@ const StacksContent = () => {
             >
               <Text>{item.name}</Text>
             </Box>
-            <Flex gap={8} alignItems={"center"}>
-              {item.stacks.map((stack) => (
-                <StacksContentItem
-                  key={stack.title}
-                  imgSrc={stack.imgSrc}
-                  alt={stack.alt}
-                  title={stack.title}
-                  description={stack.description}
-                />
-              ))}
-            </Flex>
+            {isMobile ? (
+              <MobileViewStacksBox stacks={item.stacks} />
+            ) : (
+              <WideViewStacksBox stacks={item.stacks} />
+            )}
           </Flex>
         );
       })}

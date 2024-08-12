@@ -43,18 +43,18 @@ export const stacks = [
     name: "Back-end Stacks",
     stacks: [
       {
-        imgSrc: "./img/icon_html.png",
-        alt: "icon_html",
-        title: "html3",
+        imgSrc: "./img/icon_nodejs.png",
+        alt: "icon_nodejs",
+        title: "Node.js",
         description:
-          "크로스 브라우저 호환성을 고려해, 웹표준을 준수하며 시멘틱태그를 이용해 마크업 할 수 있습니다.",
+          "서버를 구축하고, RESTful API를 설계할 수 있으며, DB와의 연동을 통해 CRUD를 구현할 수 있습니다.",
       },
       {
-        imgSrc: "./img/icon_html.png",
-        alt: "icon_html",
-        title: "html4",
+        imgSrc: "./img/icon_mysql.png",
+        alt: "icon_mysql",
+        title: "MySQL",
         description:
-          "크로스 브라우저 호환성을 고려해, 웹표준을 준수하며 시멘틱태그를 이용해 마크업 할 수 있습니다.",
+          "데이터베이스 설계 및 구축을 할 수 있으며, 쿼리문을 작성하여 데이터를 관리할 수 있습니다.",
       },
     ],
   },

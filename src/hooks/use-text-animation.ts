@@ -31,7 +31,7 @@ const useTextAnimation = (stagger = 0.05) => {
 
       scrollTrigger: {
         trigger: el,
-        start: "top center",
+        start: "top 80%",
       },
     });
 

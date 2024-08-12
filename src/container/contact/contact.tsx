@@ -1,5 +1,5 @@
 import { CenterLayout } from "@/components";
-import { useSection } from "@/hooks";
+import { useBoxScaleAnimation, useSection, useTextAnimation } from "@/hooks";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { FaGithub } from "react-icons/fa";
@@ -10,6 +10,8 @@ import { darkBgColor } from "@/constants";
 
 const Contact = () => {
   const { registerSection } = useSection();
+  const scaleRef = useBoxScaleAnimation();
+  const headRef = useTextAnimation();
 
   const contactRef = useRef<HTMLDivElement>(null);
 
@@ -34,8 +36,11 @@ const Contact = () => {
           gap={24}
           color={"white"}
           alignItems={"center"}
+          ref={scaleRef}
         >
-          <Heading size={"2xl"}>CONTACT</Heading>
+          <Heading size={"2xl"} ref={headRef}>
+            CONTACT
+          </Heading>
           <ContactText />
           <Flex gap={12}>
             <IconAnimation
@@ -61,9 +66,8 @@ const Contact = () => {
         </Flex>
       </CenterLayout>
       <Text
-        size={"sm"}
         position={"absolute"}
-        bottom={24}
+        bottom={16}
         left={"50%"}
         transform={"translateX(-50%)"}
         color={"whiteAlpha.600"}

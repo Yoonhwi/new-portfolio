@@ -1,20 +1,8 @@
-import { SectionName } from "@/constants";
+import { navLinks } from "@/constants";
 import { useSection } from "@/hooks";
 import { Box, Flex, HStack, Text } from "@chakra-ui/react";
 import gsap from "gsap";
 import { useCallback, useEffect, useRef } from "react";
-
-interface NavLinkProps {
-  name: SectionName;
-}
-
-const navLinks: NavLinkProps[] = [
-  { name: "INTRO" },
-  { name: "ABOUT" },
-  { name: "STACKS" },
-  { name: "PROJECTS" },
-  { name: "CONTACT" },
-];
 
 const DefaultLayoutHeader = () => {
   const { currentSection, scrollToSection } = useSection();

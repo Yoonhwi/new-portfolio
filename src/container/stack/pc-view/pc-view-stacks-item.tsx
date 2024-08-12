@@ -3,19 +3,19 @@ import { Flex, Box, Heading, Image, Text, Center } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-interface StacksContentItemProps {
+interface WideViewStacksItemProps {
   imgSrc: string;
   alt: string;
   title: string;
   description: string;
 }
 
-const StacksContentItem = ({
+const WideViewStacksItem = ({
   imgSrc,
   alt,
   title,
   description,
-}: StacksContentItemProps) => {
+}: WideViewStacksItemProps) => {
   const flexRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
@@ -42,6 +42,7 @@ const StacksContentItem = ({
           width: "300px",
           height: "162px",
           duration: 0.3,
+          boxShadow: "dark-lg",
         },
         "<"
       )
@@ -78,7 +79,6 @@ const StacksContentItem = ({
       onMouseLeave={handleMouseLeave}
       flexShrink={0}
       h={"162px"}
-      overflow={"hidden"}
       position={"relative"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -89,6 +89,7 @@ const StacksContentItem = ({
         h={"78px"}
         ref={flexRef}
         position={"relative"}
+        boxShadow={"md"}
       >
         <Center
           p={3}
@@ -120,4 +121,4 @@ const StacksContentItem = ({
   );
 };
 
-export default StacksContentItem;
+export default WideViewStacksItem;

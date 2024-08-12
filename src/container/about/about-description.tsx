@@ -52,7 +52,7 @@ const AboutDescription = () => {
       minH={`100vh`}
       ref={aboutDesRef}
       py={20}
-      px={12}
+      px={8}
       backgroundImage="url('./img/portfolio_bg.jpg')"
       backgroundSize="cover"
       backgroundRepeat="no-repeat"

@@ -10,8 +10,8 @@ const DrawerStacks = ({ tags }: StackTagsProps) => {
       {Object.keys(tags).map((key) => {
         return (
           <Flex alignItems={"center"} key={key}>
-            <Text flex={1}>{key}</Text>
-            <Flex flex={7} gap={2}>
+            <Text minW={"80px"}>{key}</Text>
+            <Flex gap={2} wrap={"wrap"}>
               {tags[key].map((stack) => {
                 return (
                   <Tag key={stack} p={2} colorScheme="gray">

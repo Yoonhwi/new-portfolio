@@ -28,8 +28,18 @@ const HomeInfo = () => {
       bgColor={"rgba(0,0,0,0.02)"}
       h={"100%"}
     >
-      <Flex direction={"column"} gap={4} alignItems={"center"} minW={"500px"}>
-        <Heading color={"white"} size={"3xl"} mr={"auto"} ref={feDevRef}>
+      <Flex
+        direction={"column"}
+        gap={4}
+        alignItems={"center"}
+        minW={{ base: "300px", md: "500px" }}
+      >
+        <Heading
+          color={"white"}
+          size={{ base: "2xl", md: "3xl" }}
+          mr={"auto"}
+          ref={feDevRef}
+        >
           FE-Developer
         </Heading>
 
@@ -41,7 +51,12 @@ const HomeInfo = () => {
           ref={dividerRef}
         />
 
-        <Heading color={"white"} size={"3xl"} ml={"auto"} ref={nameRef}>
+        <Heading
+          color={"white"}
+          size={{ base: "2xl", md: "3xl" }}
+          ml={"auto"}
+          ref={nameRef}
+        >
           Winhwi
         </Heading>
       </Flex>

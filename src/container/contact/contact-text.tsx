@@ -13,7 +13,7 @@ const contactItems = [
 
 const ContactText = () => {
   return (
-    <Flex direction={"column"} gap={4}>
+    <Flex direction={"column"} gap={4} py={8}>
       {contactItems.map((item) => {
         return (
           <Flex alignItems={"center"} gap={2} key={item.name}>
@@ -24,17 +24,16 @@ const ContactText = () => {
               alignItems={"center"}
               justifyContent={"center"}
               p={2}
+              display={{ base: "none", md: "flex" }}
             >
               <Icon as={item.icon} fontSize={20} color={"white"} />
             </Flex>
-            <Flex gap={4}>
-              <Text fontSize={20} minW={"70px"}>
-                {item.name}
-              </Text>
+            <Flex gap={4} fontSize={{ base: 16, md: 20 }}>
+              <Text minW={{ base: "55px", md: "70px" }}>{item.name}</Text>
               <Text position={"relative"} top={"2px"} fontWeight={"bold"}>
                 :
               </Text>
-              <Text fontSize={20}>{item.text}</Text>
+              <Text>{item.text}</Text>
             </Flex>
           </Flex>
         );
