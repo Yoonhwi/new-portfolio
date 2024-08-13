@@ -1,5 +1,5 @@
 {
-  "name": "portfolio_gsap",
+  "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,6 +14,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "framer-motion": "^11.3.6",
+    "gh-pages": "^6.1.1",
     "gsap": "^3.12.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
