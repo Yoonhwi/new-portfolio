@@ -71,7 +71,6 @@ export const cookaData: ProjectData = {
   imgSrc: "./img/project_cooka1.png",
   link: {
     git: "https://github.com/Yoonhwi/Cooka",
-    demo: "http://cooka.site/",
   },
   drawerContent: CookaDrawer,
 };
