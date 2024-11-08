@@ -40,7 +40,6 @@ export const joinusData: ProjectData = {
   imgSrc: "./img/project_joinus1.png",
   link: {
     git: "https://github.com/Yoonhwi/joinus-FE",
-    demo: "https://www.joinus.asia/",
   },
   drawerContent: JoinusDrawer,
 };
