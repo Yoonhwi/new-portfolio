@@ -21,18 +21,16 @@ const projectItems = [
 
 const ProjectCarousel = ({ emblaRef }: ProjectCarouselProps) => {
   return (
-    <Box>
-      <Box overflow={"hidden"} ref={emblaRef}>
-        <Flex>
-          {projectItems.map((el, index) => {
-            return (
-              <Box key={`project_${index}`} minW={"100%"}>
-                {el}
-              </Box>
-            );
-          })}
-        </Flex>
-      </Box>
+    <Box overflow={"hidden"} ref={emblaRef}>
+      <Flex>
+        {projectItems.map((el, index) => {
+          return (
+            <Box key={`project_${index}`} minW={"100%"} paddingLeft={"2px"}>
+              {el}
+            </Box>
+          );
+        })}
+      </Flex>
     </Box>
   );
 };

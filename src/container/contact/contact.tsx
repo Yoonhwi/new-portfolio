@@ -39,6 +39,7 @@ const Contact = () => {
           color={"white"}
           alignItems={"center"}
           ref={scaleRef}
+          py={8}
         >
           <Heading size={"2xl"} ref={headRef}>
             CONTACT

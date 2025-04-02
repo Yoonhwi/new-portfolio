@@ -26,7 +26,7 @@ const Project = () => {
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useCarouselDots(emblaApi);
 
-  const { layout } = useLayout();
+  const { isMobile } = useLayout();
 
   const { registerSection } = useSection();
   const projectRef = useRef<HTMLDivElement>(null);
@@ -75,6 +75,7 @@ const Project = () => {
       boxShadow={parentBoxShadow}
       position={"relative"}
       zIndex={1}
+      overflow={"hidden"}
     >
       <CenterLayout>
         <Flex
@@ -96,7 +97,7 @@ const Project = () => {
           <Flex
             maxW={{ base: "100%", lg: "800px" }}
             overflow={"hidden"}
-            px={layout === "medium" ? 12 : 0}
+            px={isMobile ? 4 : 0}
           >
             <ProjectCarousel emblaRef={emblaRef} />
           </Flex>
@@ -112,7 +113,7 @@ const Project = () => {
             opacity={prevBtnDisabled ? 0 : 1}
             transition={"all 0.3s ease"}
             onClick={() => onPrevButtonClick()}
-            display={{ base: "none", md: "block" }}
+            display={{ base: "none", lg: "block" }}
           >
             <Icon as={MdKeyboardArrowLeft} fontSize={"60px"} opacity={0.5} />
           </Box>
@@ -132,7 +133,7 @@ const Project = () => {
             }}
             opacity={nextBtnDisabled ? 0 : 1}
             transition={"all 0.3s ease"}
-            display={{ base: "none", md: "block" }}
+            display={{ base: "none", lg: "block" }}
             onClick={() => onNextButtonClick()}
           >
             <Icon as={MdKeyboardArrowRight} fontSize={"60px"} opacity={0.5} />

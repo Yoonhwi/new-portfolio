@@ -18,7 +18,7 @@ const ProjectItem = ({ data }: ProjectItemProps) => {
       minW={0}
     >
       <Image src={data.imgSrc} maxH={"400px"} />
-      <Flex gap={6} direction={"column"} px={{ base: 4, md: 0 }}>
+      <Flex gap={6} direction={"column"}>
         <Heading size={"lg"}>{data.name}</Heading>
         <Flex direction={"column"} gap={1}>
           {data.description.map((desc, index) => (
