@@ -28,7 +28,7 @@ const AboutChild = ({ isMobile }: AboutChildProps) => {
     };
   }, []);
   return (
-    <Box color={"white"} position={"relative"} minH={"700px"} ref={childRef}>
+    <Box color={"white"} position={"relative"} minH={"800px"} ref={childRef}>
       {!isMobile && (
         <Box
           backgroundImage={`url('./img/portfolio_bg7.jpg')`}

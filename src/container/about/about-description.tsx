@@ -1,6 +1,6 @@
 import { CenterLayout } from "@/components";
 import { useLayout } from "@/hooks";
-import { Box } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
@@ -47,7 +47,7 @@ const AboutDescription = () => {
   }, [isMobile, setIsTrigger]);
 
   return (
-    <Box
+    <Flex
       position="relative"
       minH={`100vh`}
       ref={aboutDesRef}
@@ -57,6 +57,8 @@ const AboutDescription = () => {
       backgroundSize="cover"
       backgroundRepeat="no-repeat"
       zIndex={2}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       <Box
         className="overlay"
@@ -77,7 +79,7 @@ const AboutDescription = () => {
       <CenterLayout>
         {isTrigger && <AboutChild isMobile={isMobile} />}
       </CenterLayout>
-    </Box>
+    </Flex>
   );
 };
 

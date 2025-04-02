@@ -1,12 +1,12 @@
 import { CenterLayout } from "@/components";
+import { darkBgColor } from "@/constants";
 import { useBoxScaleAnimation, useSection, useTextAnimation } from "@/hooks";
-import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FaBlog } from "react-icons/fa6";
 import IconAnimation from "./contact-icon-animation";
 import ContactText from "./contact-text";
-import { darkBgColor } from "@/constants";
 
 const Contact = () => {
   const { registerSection } = useSection();
@@ -22,12 +22,14 @@ const Contact = () => {
   }, [registerSection]);
 
   return (
-    <Box
+    <Flex
       bgColor={darkBgColor}
       color={`white`}
       minH={`100vh`}
       ref={contactRef}
       py={32}
+      justifyContent={"center"}
+      alignItems={"center"}
     >
       <CenterLayout>
         <Flex
@@ -74,7 +76,7 @@ const Contact = () => {
       >
         Copyright 2024. winhwi all rights reserved.
       </Text>
-    </Box>
+    </Flex>
   );
 };
 

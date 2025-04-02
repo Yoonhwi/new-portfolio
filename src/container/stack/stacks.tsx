@@ -1,6 +1,6 @@
 import { CenterLayout } from "@/components";
 import { useSection } from "@/hooks";
-import { Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import StacksHead from "./stacks-head";
 import StacksContent from "./stacks-content";
@@ -17,8 +17,10 @@ const Stacks = () => {
   }, [registerSection]);
 
   return (
-    <Box
+    <Flex
       minH={"100vh"}
+      justifyContent={"center"}
+      alignItems={"center"}
       bgColor={darkBgColor}
       ref={stacksRef}
       py={20}
@@ -32,7 +34,7 @@ const Stacks = () => {
           <StacksContent />
         </Flex>
       </CenterLayout>
-    </Box>
+    </Flex>
   );
 };
 
