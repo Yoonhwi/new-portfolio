@@ -10,7 +10,13 @@ const ProjectItem = ({ data }: ProjectItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex gap={6} direction={"column"} maxW={{ base: "100%", lg: "800px" }}>
+    <Flex
+      gap={6}
+      direction={"column"}
+      maxW={{ base: "100%", lg: "800px" }}
+      flex={"0 0 100%"}
+      minW={0}
+    >
       <Image src={data.imgSrc} maxH={"400px"} />
       <Flex gap={6} direction={"column"} px={{ base: 4, md: 0 }}>
         <Heading size={"lg"}>{data.name}</Heading>

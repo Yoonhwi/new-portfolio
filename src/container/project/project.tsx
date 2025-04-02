@@ -2,22 +2,30 @@ import { CenterLayout } from "@/components";
 import { darkBgColor, lightFilter, parentBoxShadow } from "@/constants";
 import {
   useBoxScaleAnimation,
+  useCarouselButtons,
   useLayout,
   useSection,
   useTextAnimation,
 } from "@/hooks";
 import { Box, Flex, Heading, Icon } from "@chakra-ui/react";
 import gsap from "gsap";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import ProjectSwiper from "./project-swiper";
-import { SwiperClass } from "swiper/react";
-
-const dummy = [{}, {}, {}, {}];
+import useEmblaCarousel from "embla-carousel-react";
+import useCarouselDots from "@/hooks/use-carousel-dots";
+import ProjectCarousel from "./project-carousel";
 
 const Project = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [swiper, setSwiper] = useState<SwiperClass | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick,
+  } = useCarouselButtons(emblaApi);
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useCarouselDots(emblaApi);
+
   const { layout } = useLayout();
 
   const { registerSection } = useSection();
@@ -56,17 +64,11 @@ const Project = () => {
     };
   }, []);
 
-  const handleDotClick = useCallback(
-    (index: number) => {
-      if (!swiper) return;
-      swiper.slideToLoop(index);
-    },
-    [swiper]
-  );
-
   return (
-    <Box
+    <Flex
       minH={"100vh"}
+      justifyContent={"center"}
+      alignItems={"center"}
       bgColor={darkBgColor}
       ref={projectRef}
       py={28}
@@ -90,35 +92,32 @@ const Project = () => {
             PROJECTS
           </Heading>
 
+          {/** embla carousel */}
           <Flex
             maxW={{ base: "100%", lg: "800px" }}
             overflow={"hidden"}
             px={layout === "medium" ? 12 : 0}
           >
-            <ProjectSwiper
-              setCurrentIndex={setCurrentIndex}
-              setSwiper={setSwiper}
-              swiper={swiper}
-            />
+            <ProjectCarousel emblaRef={emblaRef} />
           </Flex>
 
+          {/** prev arrow */}
           <Box
             position={"absolute"}
             left={0}
             top={"50%"}
             transform={"translateY(-50%)"}
             ref={arrowLeftRef}
-            _hover={{ cursor: currentIndex === 0 ? "default" : "pointer" }}
-            opacity={currentIndex === 0 ? 0 : 1}
+            _hover={{ cursor: selectedIndex === 0 ? "default" : "pointer" }}
+            opacity={prevBtnDisabled ? 0 : 1}
             transition={"all 0.3s ease"}
-            onClick={() => {
-              if (!swiper) return;
-              swiper.slidePrev();
-            }}
+            onClick={() => onPrevButtonClick()}
             display={{ base: "none", md: "block" }}
           >
             <Icon as={MdKeyboardArrowLeft} fontSize={"60px"} opacity={0.5} />
           </Box>
+
+          {/** next arrow */}
           <Box
             position={"absolute"}
             right={0}
@@ -126,21 +125,22 @@ const Project = () => {
             transform={"translateY(-50%)"}
             ref={arrowRightRef}
             _hover={{
-              cursor: currentIndex === dummy.length - 1 ? "default" : "pointer",
+              cursor:
+                selectedIndex === scrollSnaps.length - 1
+                  ? "default"
+                  : "pointer",
             }}
-            opacity={currentIndex === dummy.length - 1 ? 0 : 1}
+            opacity={nextBtnDisabled ? 0 : 1}
             transition={"all 0.3s ease"}
             display={{ base: "none", md: "block" }}
-            onClick={() => {
-              if (!swiper) return;
-              swiper.slideNext();
-            }}
+            onClick={() => onNextButtonClick()}
           >
             <Icon as={MdKeyboardArrowRight} fontSize={"60px"} opacity={0.5} />
           </Box>
 
+          {/** dots */}
           <Flex gap={6}>
-            {dummy.map((_, index) => {
+            {scrollSnaps.map((_, index) => {
               return (
                 <Box
                   key={index}
@@ -148,21 +148,21 @@ const Project = () => {
                   h={"10px"}
                   bgColor={"white"}
                   borderRadius={"50%"}
-                  opacity={index === currentIndex ? 1 : 0.3}
+                  opacity={index === selectedIndex ? 1 : 0.3}
                   filter={lightFilter}
                   _hover={{
                     opacity: 0.7,
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
-                  onClick={() => handleDotClick(index)}
+                  onClick={() => onDotButtonClick(index)}
                 />
               );
             })}
           </Flex>
         </Flex>
       </CenterLayout>
-    </Box>
+    </Flex>
   );
 };
 
