@@ -1,3 +1,4 @@
+import JustPlanItDrawer from "@/container/project/drawer/planit-drawer";
 import CalendarDrawer from "@/container/project/drawer/calendar-drawer";
 import CookaDrawer from "@/container/project/drawer/cooka-drawer";
 import JoinusDrawer from "@/container/project/drawer/joinus-drawer";
@@ -14,6 +15,22 @@ export interface ProjectData {
   };
   drawerContent: () => JSX.Element;
 }
+
+export const justPlanItData: ProjectData = {
+  name: "Just Plan It",
+  description: [
+    "Just Plan It은 여행 계획을 세우고 공유할 수 있는 웹 애플리케이션입니다.",
+    "여행을 계획하고 공유하는 과정을 통해 여행에 대한 관심과 열정을 나누는 플랫폼입니다.",
+    "이 프로젝트는 React를 사용하여 개발되었습니다.",
+  ],
+  tags: ["#React", "#Spring", "#반응형", "#다크모드"],
+  imgSrc: "./img/project_planit.png",
+  link: {
+    git: "https://github.com/JandiGoorm/jandi_plan_frontend",
+    demo: "https://justplanit.site",
+  },
+  drawerContent: JustPlanItDrawer,
+};
 
 export const portfolioData: ProjectData = {
   name: "Winhwi's Portfolio",

@@ -5,6 +5,7 @@ import {
   calendarData,
   cookaData,
   joinusData,
+  justPlanItData,
   portfolioData,
 } from "@/constants";
 
@@ -13,6 +14,7 @@ interface ProjectCarouselProps {
 }
 
 const projectItems = [
+  <ProjectItem data={justPlanItData} />,
   <ProjectItem data={portfolioData} />,
   <ProjectItem data={joinusData} />,
   <ProjectItem data={calendarData} />,
