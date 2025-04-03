@@ -26,6 +26,7 @@ const About = () => {
       overflow={"hidden"}
       boxShadow={parentBoxShadow}
       zIndex={3}
+      h={"100vh"}
     >
       <Box
         className="overlay"
